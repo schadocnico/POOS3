@@ -9,6 +9,7 @@ public abstract class Seance {
 	int nbPlacesVenduesTN =0;
 	
 	public Seance(int jour, Date horaire) {
+		super();
 		this.jour=jour;
 		this.horaire=horaire;
 	}
