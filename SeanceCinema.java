@@ -14,8 +14,7 @@ public class SeanceCinema extends Seance{
 	
 	@Override
 	public int nbPlacesDispo() {
-		// TODO Auto-generated method stub
-		return 0;
+		return salle.getCapacite();
 	}
 
 	@Override
