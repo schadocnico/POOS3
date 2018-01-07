@@ -1,3 +1,5 @@
+package projet;
+
 import java.util.*;
 
 public class ProgrammationSemaine {
@@ -11,15 +13,22 @@ public class ProgrammationSemaine {
 	
 	public void associerEnsembleSeanceAUnFilm(Collection<SeanceCinema> c, Film film){
 		Iterator<SeanceCinema> it = c.iterator();
-		while(it.hasnext()){
-			ListSeanceCinema.putIsAbsent(it.next(), film);
+		while(it.hasNext()){
+			listeSeancesCinema.putIfAbsent(it.next(), film);
+		}
+	}
+	
+	public void associerEnsembleSeanceAUnePiece(Collection<SeanceTheatre> c, PieceTheatre piece){
+		Iterator<SeanceTheatre> it = c.iterator();
+		while(it.hasNext()){
+			ListeSeancesTheatre.putIfAbsent(it.next(), piece);
 		}
 	}
 	
 	public Collection<SeanceCinema> recupererEnsembleSceance(Film film){
-		Collection<SeanceCinema> seance = new List<>();
+		Collection<SeanceCinema> seance = new ArrayList<>();
 		
-		Iterator<Map.Entry<SeanceCinema, Film>> it = listeSeanceCinema.entrySet().iterator();
+		Iterator<Map.Entry<SeanceCinema, Film>> it = listeSeancesCinema.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry entry = (Map.Entry) it.next();
 			SeanceCinema key = (SeanceCinema) entry.getKey();
@@ -31,13 +40,42 @@ public class ProgrammationSemaine {
 		return seance;
 	}
 	
+	public Collection<SeanceTheatre> recupererEnsembleSceance(PieceTheatre piece){
+		Collection<SeanceTheatre> seance = new ArrayList<>();
+		
+		Iterator<Map.Entry<SeanceTheatre, PieceTheatre>> it = ListeSeancesTheatre.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry entry = (Map.Entry) it.next();
+			SeanceTheatre key = (SeanceTheatre) entry.getKey();
+			PieceTheatre value = (PieceTheatre) entry.getValue();
+			if(value.equals(piece)){
+				seance.add(key);
+			}
+		}
+		return seance;
+	}
+	
 	public Collection<SeanceCinema> recupererEnsembleSceance(Film film, int jour){
 		Collection<SeanceCinema> liste = recupererEnsembleSceance(film);
-		Collection<SeanceCinema> listeFin = new List<>();
+		Collection<SeanceCinema> listeFin = new ArrayList<>();
 		
 		Iterator<SeanceCinema> it = liste.iterator();
 		while(it.hasNext()){
 			SeanceCinema seance = it.next();
+			if (seance.jour == jour){
+				listeFin.add(seance);
+			}
+		}
+		return listeFin;
+	}
+	
+	public Collection<SeanceTheatre> recupererEnsembleSceance(PieceTheatre piece, int jour){
+		Collection<SeanceTheatre> liste = recupererEnsembleSceance(piece);
+		Collection<SeanceTheatre> listeFin = new ArrayList<>();
+		
+		Iterator<SeanceTheatre> it = liste.iterator();
+		while(it.hasNext()){
+			SeanceTheatre seance = it.next();
 			if (seance.jour == jour){
 				listeFin.add(seance);
 			}
@@ -53,10 +91,18 @@ public class ProgrammationSemaine {
 		}
 	}
 	
+	public void suprimmerPiece(PieceTheatre piece){
+		Collection<SeanceTheatre> liste = recupererEnsembleSceance(piece);
+		Iterator<SeanceTheatre> it = liste.iterator();
+		while(it.hasNext()){
+			ListeSeancesTheatre.remove(it.next(), piece);
+		}
+	}
+	
 	public Collection<Film> recupererEnsembleFilm(){
-		Collection<Film> seance = new List<>();
+		Collection<Film> seance = new ArrayList<>();
 		
-		Iterator<Map.Entry<SeanceCinema, Film>> it = listeSeanceCinema.entrySet().iterator();
+		Iterator<Map.Entry<SeanceCinema, Film>> it = listeSeancesCinema.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry entry = (Map.Entry) it.next();
 			SeanceCinema key = (SeanceCinema) entry.getKey();
@@ -68,17 +114,45 @@ public class ProgrammationSemaine {
 		return seance;
 	}
 	
+	public Collection<PieceTheatre> recupererEnsemblePiece(){
+		Collection<PieceTheatre> seance = new ArrayList<>();
+		
+		Iterator<Map.Entry<SeanceTheatre, PieceTheatre>> it = ListeSeancesTheatre.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry entry = (Map.Entry) it.next();
+			SeanceTheatre key = (SeanceTheatre) entry.getKey();
+			PieceTheatre value = (PieceTheatre) entry.getValue();
+			if(!(seance.contains(value))){
+				seance.add(value);
+			}
+		}
+		return seance;
+	}
+	
 	public int nbFilmProgrammes(){
 		return recupererEnsembleFilm().size();
+	}
+	
+	public int nbPieceProgrammes(){
+		return recupererEnsemblePiece().size();
 	}
 	
 	public boolean estProgramme(Film film){
 		return recupererEnsembleFilm().contains(film);
 	}
 	
+	public boolean estProgramme(PieceTheatre piece){
+		return recupererEnsemblePiece().contains(piece);
+	}
+	
 	public boolean suprimmerSeance(Seance seance, Film film){
 		return listeSeancesCinema.remove(seance,film);
 	}
+	
+	public boolean suprimmerSeance(Seance seance, PieceTheatre piece){
+		return ListeSeancesTheatre.remove(seance,piece);
+	}
+	
 	
 	public String consulterSceance(Film film, int jour, Heure horaire) {
 		Collection<SeanceCinema> liste = recupererEnsembleSceance(film, jour);
@@ -86,6 +160,18 @@ public class ProgrammationSemaine {
 		Iterator<SeanceCinema> it = liste.iterator();
 		while(it.hasNext()){
 			SeanceCinema next = it.next();
+			if(next.horaire.equals(horaire))
+				return next.toString();
+		}
+		return "";
+	}
+	
+	public String consulterSceance(PieceTheatre piece, int jour, Heure horaire) {
+		Collection<SeanceTheatre> liste = recupererEnsembleSceance(piece, jour);
+		
+		Iterator<SeanceTheatre> it = liste.iterator();
+		while(it.hasNext()){
+			SeanceTheatre next = it.next();
 			if(next.horaire.equals(horaire))
 				return next.toString();
 		}
