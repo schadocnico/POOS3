@@ -45,7 +45,7 @@ public class ProgrammationSemaine {
 		return listeFin;
 	}
 	
-	public void supprimerFilm(Film film){
+	public void suprimmerFilm(Film film){
 		Collection<SeanceCinema> liste = recupererEnsembleSceance(film);
 		Iterator<SeanceCinema> it = liste.iterator();
 		while(it.hasNext()){
@@ -54,7 +54,7 @@ public class ProgrammationSemaine {
 	}
 	
 	public Collection<Film> recupererEnsembleFilm(){
-		Collection<SeanceCinema> seance = new List<>();
+		Collection<Film> seance = new List<>();
 		
 		Iterator<Map.Entry<SeanceCinema, Film>> it = listeSeanceCinema.entrySet().iterator();
 		while (it.hasNext()) {
@@ -66,5 +66,29 @@ public class ProgrammationSemaine {
 			}
 		}
 		return seance;
+	}
+	
+	public int nbFilmProgrammes(){
+		return recupererEnsembleFilm().size();
+	}
+	
+	public boolean estProgramme(Film film){
+		return recupererEnsembleFilm().contains(film);
+	}
+	
+	public boolean suprimmerSeance(Seance seance, Film film){
+		return listeSeancesCinema.remove(seance,film);
+	}
+	
+	public String consulterSceance(Film film, int jour, Heure horaire) {
+		Collection<SeanceCinema> liste = recupererEnsembleSceance(film, jour);
+		
+		Iterator<SeanceCinema> it = liste.iterator();
+		while(it.hasNext()){
+			SeanceCinema next = it.next();
+			if(next.horaire.equals(horaire))
+				return next.toString();
+		}
+		return "";
 	}
 }
