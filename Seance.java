@@ -8,6 +8,11 @@ public abstract class Seance {
 	Date horaire;
 	int nbPlacesVenduesTN =0;
 	
+	public Seance(int jour, Date horaire) {
+		this.jour=jour;
+		this.horaire=horaire;
+	}
+	
 	public abstract int nbPlacesDispo();
 	
 	 public abstract int totalVendu();
