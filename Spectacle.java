@@ -1,4 +1,4 @@
-package projet;
+package poo;
 
 public abstract class Spectacle {
 	private String titre, interpretes;

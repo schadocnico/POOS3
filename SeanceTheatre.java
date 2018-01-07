@@ -1,4 +1,4 @@
-package projet;
+package poo;
 
 
 public class SeanceTheatre extends Seance{

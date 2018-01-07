@@ -1,8 +1,9 @@
-package projet;
+package poo;
 
 
 public class SalleTheatre extends Salle{
-	
+	int nbPlaceBalcon;
+	double prixPlaceBalcon;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -28,8 +29,9 @@ public class SalleTheatre extends Salle{
 	int nbFauteuils;
 	double prixDuFauteuil;
 	
-	public SalleTheatre(String nomSalle, int capacite, double tarif) {
+	public SalleTheatre(String nomSalle, int capacite, double tarif, int nbPlaceBalcon, double prixPlaceBalcon) {
 		super(nomSalle, capacite, tarif);
-		// TODO Auto-generated constructor stub
+		this.nbPlaceBalcon = nbPlaceBalcon;
+		this.prixPlaceBalcon = prixPlaceBalcon;
 	}
 }
