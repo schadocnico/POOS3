@@ -177,4 +177,31 @@ public class ProgrammationSemaine {
 		}
 		return "";
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProgrammationSemaine other = (ProgrammationSemaine) obj;
+		if (ListeSeancesTheatre == null) {
+			if (other.ListeSeancesTheatre != null)
+				return false;
+		} else if (!ListeSeancesTheatre.equals(other.ListeSeancesTheatre))
+			return false;
+		if (listeSeancesCinema == null) {
+			if (other.listeSeancesCinema != null)
+				return false;
+		} else if (!listeSeancesCinema.equals(other.listeSeancesCinema))
+			return false;
+		if (semaine != other.semaine)
+			return false;
+		return true;
+	}
+
+
 }
