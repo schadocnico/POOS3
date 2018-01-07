@@ -19,7 +19,7 @@ public class SeanceCinema extends Seance{
 
 	@Override
 	public int totalVendu() {
-		return nbPlacesVenduesTR + nbPlacesVenduesTN;
+		return nbPlacesVenduesTR + super.nbPlacesVenduesTN;
 	}
 
 	@Override
@@ -28,7 +28,8 @@ public class SeanceCinema extends Seance{
 	}
 	
 	public void vendrePlacesTR(int nbre) {
-		this.nbPlacesVenduesTR=nbre;
+		
+		this.nbPlacesVenduesTR+=nbre;
 	}
 
 }
