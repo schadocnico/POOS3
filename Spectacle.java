@@ -1,4 +1,3 @@
-package projetS3;
 package projet;
 
 public abstract class Spectacle {
@@ -9,9 +8,6 @@ public abstract class Spectacle {
 		this.titre = titre;
 		this.interpretes = interpretes;
 	}
-<<<<<<< HEAD
-	
-=======
 
 	@Override
 	public String toString() {
@@ -48,7 +44,6 @@ public abstract class Spectacle {
 			return false;
 		return true;
 	}
->>>>>>> 7cc7770b868d3389e463213deba22d5fa40a420e
 }
 
 
