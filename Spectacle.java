@@ -8,4 +8,5 @@ public abstract class Spectacle {
 		this.titre = titre;
 		this.interpretes = interpretes;
 	}
+	
 }
