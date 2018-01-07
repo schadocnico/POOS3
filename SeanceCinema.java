@@ -15,6 +15,32 @@ public class SeanceCinema extends Seance{
 		return salle.getCapacite() - nbPlacesVenduesTR;
 	}
 
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SeanceCinema other = (SeanceCinema) obj;
+		if (nbPlacesVenduesTR != other.nbPlacesVenduesTR)
+			return false;
+		if (salle == null) {
+			if (other.salle != null)
+				return false;
+		} else if (!salle.equals(other.salle))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "SeanceCinema [salle=" + salle + ", nbPlacesVenduesTR=" + nbPlacesVenduesTR + "]";
+	}
+
 	@Override
 	public int totalVendu() {
 		return nbPlacesVenduesTR + super.nbPlacesVenduesTN;

@@ -2,6 +2,8 @@ package projet;
 
 public class PieceTheatre extends Spectacle{
 
+
+
 	private String metteurEnScene;
 	private int nbEntractes;
 	
@@ -26,6 +28,32 @@ public class PieceTheatre extends Spectacle{
 
 	public void setNbEntractes(int nbEntractes) {
 		this.nbEntractes = nbEntractes;
+	}
+
+
+	@Override
+	public String toString() {
+		return "PieceTheatre [metteurEnScene=" + metteurEnScene + ", nbEntractes=" + nbEntractes + "]";
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PieceTheatre other = (PieceTheatre) obj;
+		if (metteurEnScene == null) {
+			if (other.metteurEnScene != null)
+				return false;
+		} else if (!metteurEnScene.equals(other.metteurEnScene))
+			return false;
+		if (nbEntractes != other.nbEntractes)
+			return false;
+		return true;
 	}
 	
 }
