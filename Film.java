@@ -1,4 +1,4 @@
-package projetS3;
+package projet;
 
 import java.util.Date;
 
