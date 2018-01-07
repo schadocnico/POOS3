@@ -19,14 +19,12 @@ public class SeanceCinema extends Seance{
 
 	@Override
 	public int totalVendu() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nbPlacesVenduesTR + nbPlacesVenduesTN;
 	}
 
 	@Override
 	public double tauxRemplissage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (nbPlacesDispo()/(nbPlacesDispo()+totalVendu()))*100;
 	}
 	
 	public void vendrePlacesTR(int nbre) {
