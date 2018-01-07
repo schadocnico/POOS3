@@ -18,7 +18,8 @@ public class SceanceTheatre extends Seance{
 	}
 	
 	public void vendrePlacesFauteuil(int nbre){
-		
+		if(nbFauteuilsDispo()<nbre) throw new NombreFauteuilsException("Il n'y a plus assez de place!");
+		nbFauteuilesVendus += nbre;
 	}
 
 	
