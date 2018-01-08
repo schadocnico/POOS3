@@ -3,7 +3,7 @@ package projet;
 import java.util.*;
 
 /**
- * ProgrammationSemaine permet de créer une programmtion pour une semaine passée en paramètre
+ * ProgrammationSemaine permet de créer une programmation pour une semaine passée en paramètre
  * 
  * @author 
  * @version 
@@ -63,7 +63,7 @@ public class ProgrammationSemaine {
 	}
 	
 	/**
-    * recuperer l'emsemble des séances associées à un film.
+    * recuperer l'ensemble des séances associées à un film.
     * @param film est de type Film.
     * @return La valeur est un ensemble de séance.
 	*/
@@ -83,7 +83,7 @@ public class ProgrammationSemaine {
 	}
 	
 	/**
-    * recuperer l'emsemble des séances associées à une piece de théatre.
+    * recuperer l'ensemble des séances associées à une piece de théatre.
     * @param piece est de type PieceTheatre.
     * @return La valeur est un ensemble de séance.
 	*/
@@ -123,7 +123,7 @@ public class ProgrammationSemaine {
 	}
 	
 	/**
-    * recuperer l'emsemble des séances associées à une piece de theatre à un jour donné.
+    * recuperer l'ensemble des séances associées à une piece de theatre à un jour donné.
     * @param piece est de type PieceTheatre.
     * @param jour est de type int.
     * @return La valeur est un ensemble de séance.
