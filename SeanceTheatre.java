@@ -1,4 +1,4 @@
-package projet;
+package poo;
 
 /**
  * SeanceTheatre hérite de la classe Seance.
