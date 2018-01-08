@@ -295,6 +295,9 @@ public class ProgrammationSemaine {
 	}
 
 
+	/**
+	* indique si l'objet passé en parametre est égal à celui ci
+	*/
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
