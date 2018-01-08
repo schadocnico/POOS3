@@ -10,7 +10,7 @@ public abstract class Spectacle {
 	
 
 	/**
-	    * titre et interpretes sont de type chaine de caractere
+	    * titre et interpretes sont de type chaine de caracteres
 		*/
 	private String titre, interpretes;
 	
