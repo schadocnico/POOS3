@@ -1,14 +1,37 @@
-package projet;
+package poo;
 
+/**
+ * Classe Spectacle
+ * 
+ * @author 
+ * @version 
+ */
 public abstract class Spectacle {
+	
+
+	/**
+	    * titre et interpretes sont de type chaine de caracteres
+		*/
 	private String titre, interpretes;
 	
+	
+
+	/**
+	    * Constructeur Spectacle.
+	    * @param titre est de type chaine de caractères
+	    * @param interpretes est de type chaine de caractères
+		*/	
 	public Spectacle(String titre, String interpretes) {
 		super();
 		this.titre = titre;
 		this.interpretes = interpretes;
 	}
 
+	
+	/**
+	    * méthode toString de Spectacle.
+	    * @return on retourne une chaine de caractères
+		*/
 	@Override
 	public String toString() {
 		return "Spectacle [titre=" + titre + ", interpretes=" + interpretes + "]";
@@ -23,6 +46,10 @@ public abstract class Spectacle {
 		return result;
 	}
 
+	
+	/**
+	* indique si l'objet passé en parametre est égal à celui ci
+	*/
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
